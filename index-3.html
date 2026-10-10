@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#111620" />
+<title>SpotGarage v0.5.1 — My Car Collection</title>
+<style>
+:root{color-scheme:dark;--bg:#0c111a;--surface:#181f2c;--surface2:#222d3b;--text:#f5f8fd;--muted:#a5b1c3;--line:#344154;--accent:#ffbe45;--accent-dark:#1c1510;--green:#73e0ba;--rad:20px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}.shell{width:min(100%,880px);margin:0 auto;padding:0 18px 84px}.masthead{display:flex;align-items:center;justify-content:space-between;padding:22px 0 16px;gap:10px}.brand{font-size:1.32rem;font-weight:950;letter-spacing:.035em;white-space:nowrap}.brand span{color:var(--accent)}.little{font-size:.78rem;color:var(--muted)}.tag{padding:7px 10px;border-radius:9px;border:1px solid var(--line);font-size:.73rem;color:var(--muted)}.tabbar{display:grid;grid-template-columns:1fr 1fr;background:#151d28;border:1px solid var(--line);padding:5px;border-radius:15px;margin-bottom:25px;gap:4px}.tab{border:0;background:transparent;padding:12px;border-radius:11px;color:var(--muted);font-weight:800}.tab.active{background:#2c3948;color:white}.headline{font-size:clamp(1.65rem,5vw,2.5rem);font-weight:900;line-height:1.16;letter-spacing:-.04em;margin:0 0 9px}.lead{color:var(--muted);margin:0 0 25px;line-height:1.55}.sectiontitle{font-size:1.05rem;font-weight:850;letter-spacing:-.015em;margin:0 0 12px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--rad);padding:19px;margin-bottom:18px}.upload{border:2px dashed #536072;border-radius:15px;padding:28px 16px;text-align:center;background:#202b3a}.cameraIcon{font-size:2.6rem;margin:0 0 8px}.upload h3{margin:0 0 4px;font-size:1.1rem}.upload p{font-size:.9rem;color:var(--muted);margin:0 0 18px}.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.btn{border:1px solid var(--line);border-radius:11px;min-height:44px;padding:11px 16px;background:#293445;color:var(--text);font-weight:800}.btn.primary{background:var(--accent);color:#1a1510;border-color:var(--accent)}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.full{display:block;width:100%}.btn.danger{color:#ffc0bc;border-color:#87413e;background:#37272c}.btn.ghost{background:none}.file-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field label{color:#cbd6e5;font-size:.78rem;font-weight:750}.field input,.field select{background:#0e1520;color:white;border:1px solid #536077;border-radius:11px;min-width:0;padding:12px 11px;width:100%;min-height:47px}.field input::placeholder{color:#77869b}.helper{font-size:.8rem;color:var(--muted);margin:8px 0 0}.photo-preview{display:none;margin-top:17px}.photo-preview.show{display:block}.art-canvas{display:block;width:100%;max-height:360px;object-fit:contain;background:radial-gradient(circle at top,#1a2433,#0f1721 70%);border-radius:12px;border:1px solid #475366}.style-toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}.pill{color:#ffce7b;font-size:.8rem;font-weight:700}.toggle{display:flex;align-items:center;gap:9px;font-size:.83rem}.toggle input{width:18px;height:18px;accent-color:var(--accent)}.callout{padding:13px 15px;border-radius:11px;background:#242a35;border:1px solid #37445a;color:#c5d1e1;font-size:.84rem;line-height:1.45;margin:14px 0 0}.callout b{color:white}.flash{display:none;margin:15px 0;padding:13px 15px;border-radius:11px;background:#183b32;color:#a6f1d3;border:1px solid #31745e}.flash.show{display:block}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}.topline h2{margin:0;font-size:1.7rem}.garage-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.garage-actions .btn{font-size:.82rem;padding:10px 13px}.collection{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.car-card{padding:0;border:1px solid #3b495b;border-radius:16px;overflow:hidden;background:#202b38;color:inherit;text-align:left;box-shadow:0 4px 15px #0004;min-width:0}.car-card img{display:block;width:100%;aspect-ratio:1.32;object-fit:contain;padding:10px;background:radial-gradient(circle at top,#1d2938,#111820 72%)}.car-card-body{padding:12px 13px}.car-model{font-size:1rem;font-weight:850;line-height:1.2;overflow-wrap:anywhere}.car-desc{font-size:.76rem;color:var(--muted);margin:5px 0 11px}.car-meta{display:flex;flex-wrap:wrap;gap:6px;color:#ffd89a;font-size:.72rem}.car-meta b{padding:5px 8px;background:#3d362e;border-radius:6px}.empty{text-align:center;padding:38px 15px;border:1px dashed #4b596e;border-radius:18px;color:var(--muted)}.empty .emoji{font-size:3rem;margin-bottom:13px}.empty h3{color:var(--text);margin:0 0 6px}.empty p{line-height:1.5;margin:0}.modal{position:fixed;inset:0;background:#02060bd9;display:none;align-items:center;justify-content:center;z-index:10;padding:18px;overflow:auto}.modal.show{display:flex}.dialog{width:min(100%,480px);max-height:96vh;overflow:auto;background:#1c2532;border:1px solid #4f6178;border-radius:20px;padding:17px}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.dialog-head h3{margin:0;font-size:1.12rem}.close{background:#344153;border:0;color:white;border-radius:10px;width:40px;height:40px;font-size:1.35rem}.detail-img{width:100%;aspect-ratio:1.5;object-fit:contain;border-radius:12px;background:radial-gradient(circle at top,#1b2735,#111a24 72%);display:block;padding:10px}.detail-title{font-size:1.45rem;font-weight:900;margin:14px 0 2px}.detail-sub{color:var(--muted);font-size:.85rem;margin:0 0 15px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:12px 7px;background:#2a3747;border-radius:12px;text-align:center;min-width:0}.stat .value{font-size:1rem;font-weight:900;overflow-wrap:anywhere}.stat .caption{font-size:.68rem;color:var(--muted);margin-top:5px}.detail-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.footnote{font-size:.75rem;color:var(--muted);margin-top:25px;line-height:1.5;text-align:center}
+@media(max-width:470px){.shell{padding-inline:14px}.panel{padding:15px}.formgrid{gap:10px}.brand{font-size:1.1rem}.tag{font-size:.65rem;padding:6px}.collection{gap:9px}.car-card-body{padding:9px}.car-model{font-size:.87rem}.car-desc{font-size:.7rem}.stats{gap:5px}.stat .value{font-size:.84rem}}
+@media(min-width:700px){.collection{grid-template-columns:repeat(3,1fr)}}
+
+/* Manual outline tool: no unreliable auto color-selection. */
+.editor-modal{padding:0;background:#07101bf5;align-items:stretch;overflow:auto;overscroll-behavior:contain}
+.editor-dialog{width:min(100%,880px);min-height:100dvh;margin:0 auto;padding:16px 12px 26px;background:#182331;display:flex;flex-direction:column;gap:12px}
+.editor-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.editor-top h2{font-size:1.25rem;margin:0}
+.editor-help{margin:0;color:#d7e2ef;line-height:1.45;font-size:.89rem}
+#outlineCanvas{display:block;width:100%;height:auto;aspect-ratio:760/500;border:2px solid #dba54b;background:#0c1520;border-radius:12px;touch-action:none;user-select:none;-webkit-user-select:none}
+.editor-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.editor-actions .btn{font-size:.9rem}
+.editor-actions .btn.primary{grid-column:span 2}
+.editor-note{font-size:.8rem;color:#adbcd0;margin:0}
+.editor-status{font-size:.87rem;color:#ffce7b;min-height:1.5em;margin:0}
+.photo-steps{margin:10px 0 0;color:#c1d1e5;font-size:.86rem;line-height:1.5}
+.trace-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.trace-actions .btn{flex:1}
+@media(min-width:700px){.editor-dialog{min-height:unset;margin:auto;border-radius:18px;border:1px solid #52627c}}
+
+/* Premium blue collectible presentation; all dynamic text remains ordinary HTML/canvas. */
+:root{--accent:#67b7ff;--green:#74d4eb}
+.brand span{color:#63b8ff}.btn.primary{background:linear-gradient(115deg,#84d5ff,#3e9cf7);border-color:#73c7ff;color:#061b35}
+.car-card{border:2px solid #5686b5;background:linear-gradient(165deg,#142e55,#0d182b 75%);box-shadow:inset 0 0 0 2px #0b1423,0 5px 22px #01071288}
+.car-card img{background:radial-gradient(ellipse at center,#216aa9 0,#0f2d52 45%,#081224 100%)}
+.car-meta{color:#d5efff}.car-meta b{background:#193c63;border:1px solid #31689d}
+.detail-img{background:radial-gradient(ellipse at center,#1961a5,#07162e 80%)}
+.dialog{border:2px solid #548bc3;background:linear-gradient(155deg,#16385c,#101f36 65%)}
+.stat{background:linear-gradient(180deg,#1b4872,#101f38);border:1px solid #3176af}
+.pill{color:#a0d8ff}.ai-progress{padding:11px 12px;background:#132d48;color:#dbf1ff;border:1px solid #3275a5;border-radius:10px;font-size:.84rem;margin-top:10px;line-height:1.5}
+.ai-progress[hidden]{display:none}.trace-actions .btn{min-width:145px}.trace-actions .btn.ghost{flex:0 0 100%;min-width:0}
+</style>
+</head>
+<body>
+<main class="shell">
+ <header class="masthead"><div class="brand">SPOT<span>GARAGE</span><div class="little">YOUR CARS. YOUR COLLECTION.</div></div><div class="tag">FREE • NO ACCOUNT</div></header>
+ <nav class="tabbar" aria-label="Sections"><button id="captureTab" class="tab active" type="button">📸 Spot a car</button><button id="garageTab" class="tab" type="button">🏁 My garage <span id="garageCount">(0)</span></button></nav>
+ <section id="capturePage">
+   <h1 class="headline">Every car has a story.<br/>Collect yours.</h1><p class="lead">Take a photo, give it a comic-book look, and make your own collectible car card.</p>
+   <div class="panel"><h2 class="sectiontitle">1. Add a car photo</h2>
+      <div class="upload"><div class="cameraIcon">📷</div><h3>Spot something cool?</h3><p>Snap a photo or choose one you already took.</p>
+        <div class="actions"><button class="btn primary" id="cameraBtn" type="button">📷 Take photo</button><button class="btn" id="galleryBtn" type="button">🖼️ Choose photo</button></div>
+        <input type="file" class="file-input" id="cameraInput" accept="image/*" capture="environment" aria-label="Take a photo"/><input type="file" class="file-input" id="galleryInput" accept="image/*" aria-label="Choose photo"/>
+      </div>
+      <div class="photo-preview" id="photoPreview"><p class="photo-steps"><b>1. Tap AI Remove Background.</b> The first time needs internet to load the AI. If it misses, draw around the car instead.</p><div class="trace-actions"><button type="button" class="btn primary" id="aiRemoveBtn">✨ AI remove background</button><button type="button" class="btn" id="openOutlineBtn">✏️ Draw around car</button><button type="button" class="btn ghost" id="fullPhotoBtn">↶ Full photo</button></div><div class="ai-progress" id="aiProgress" role="status" aria-live="polite" hidden></div><canvas id="previewCanvas" class="art-canvas" width="760" height="500" aria-label="Car artwork preview" style="margin-top:13px"></canvas><p class="helper" id="tapHint">Showing the original photo. Choose AI background removal or draw around the car.</p>
+        <div class="style-toggle"><span class="pill">✨ Clean cartoon artwork</span><label class="toggle"><input type="checkbox" id="comicCheck" checked/> Light cartoon effect</label></div></div>
+   </div>
+   <form id="carForm" class="panel" autocomplete="off"><h2 class="sectiontitle">2. Tell us about the car</h2>
+     <div class="formgrid">
+       <div class="field"><label for="make">Make *</label><input id="make" placeholder="e.g. Ford" maxlength="40" required/></div>
+       <div class="field"><label for="model">Model *</label><input id="model" placeholder="e.g. Mustang GT" maxlength="50" required/></div>
+       <div class="field"><label for="year">Year</label><input id="year" type="number" inputmode="numeric" min="1885" max="2035" placeholder="e.g. 2024"/></div>
+       <div class="field"><label for="rarity">Rarity</label><select id="rarity"><option>Common</option><option>Uncommon</option><option selected>Rare</option><option>Legendary</option></select></div>
+       <div class="field"><label for="hp">Horsepower (hp)</label><input id="hp" type="number" min="0" max="10000" inputmode="numeric" placeholder="e.g. 480"/></div>
+       <div class="field"><label for="speed">Top speed (mph)</label><input id="speed" type="number" min="0" max="1000" inputmode="numeric" placeholder="e.g. 155"/></div>
+       <div class="field" style="grid-column:span 2"><label for="price">Estimated price (USD)</label><input id="price" type="number" min="0" max="1000000000" inputmode="numeric" placeholder="e.g. 45000"/></div>
+     </div>
+     <p class="helper">For now, you enter these details yourself. AI background removal is included; make, model, horsepower, and price are still entered by you.</p>
+     <div class="callout"><b>Unlimited free spotting.</b> Your cars stay on this device. Back up your garage before changing app files or clearing browser data. AI removal downloads a model, but does not upload your car photo.</div>
+     <div class="flash" id="savedMessage" role="status">✓ Car saved in your garage!</div>
+     <button class="btn primary full" type="submit" style="margin-top:16px">🏁 Save collectible card</button>
+   </form>
+ </section>
+ <section id="garagePage" hidden>
+    <div class="topline"><div><h2>My garage</h2><div class="little">Every car you've collected, in one place.</div></div><button class="btn primary" id="addAnotherBtn" type="button">+ Spot a car</button></div>
+    <div class="garage-actions"><button class="btn" type="button" id="backupBtn">⬇ Back up collection</button><button class="btn" type="button" id="restoreBtn">⬆ Restore backup</button><input class="file-input" type="file" id="backupInput" accept=".json,application/json" aria-label="Restore collection backup"/></div>
+    <div id="emptyGarage" class="empty"><div class="emoji">🏎️</div><h3>Your garage is empty</h3><p>Spot your first car to start a collection!</p></div>
+    <div id="garageGrid" class="collection"></div>
+ </section>
+ <p class="footnote">SpotGarage v0.5 • AI vehicle cutout needs internet on first use • Manual backup works offline • No subscription</p>
+</main>
+<div class="modal editor-modal" id="outlineModal" role="dialog" aria-modal="true" aria-label="Draw around car"><div class="editor-dialog"><div class="editor-top"><h2>✏️ Trace your car</h2><button class="close" type="button" id="closeOutline" aria-label="Close editor">×</button></div><p class="editor-help"><b>Draw one line all the way around the outside of the car.</b> Start anywhere on its edge, keep your finger on the screen, and finish where you started. Everything outside the line will disappear.</p><canvas id="outlineCanvas" width="760" height="500" aria-label="Draw an outline around the car with your finger"></canvas><p class="editor-status" id="outlineStatus">Use one finger to trace around the car.</p><div class="editor-actions"><button type="button" class="btn" id="clearOutline">↶ Start over</button><button type="button" class="btn" id="cancelOutline">Cancel</button><button type="button" class="btn primary" id="useOutline" disabled>✓ Remove background</button></div><p class="editor-note">Tip: For tricky edges, trace just outside the car so you don't accidentally cut off a mirror or bumper. This is manual removal, not AI detection.</p></div></div>
+<div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-label="Car details"><div class="dialog"><div class="dialog-head"><h3>COLLECTIBLE CARD</h3><button type="button" id="closeModal" class="close" aria-label="Close">×</button></div>
+  <img alt="Saved car" id="detailImage" class="detail-img"/><div class="detail-title" id="detailTitle"></div><p class="detail-sub" id="detailSubtitle"></p><div class="stats"><div class="stat"><div class="value" id="detailHp">—</div><div class="caption">HORSEPOWER</div></div><div class="stat"><div class="value" id="detailSpeed">—</div><div class="caption">TOP SPEED</div></div><div class="stat"><div class="value" id="detailPrice">—</div><div class="caption">PRICE EST.</div></div></div>
+  <div class="detail-buttons"><button id="downloadCardBtn" type="button" class="btn primary">⬇ Save card image</button><button id="deleteCardBtn" type="button" class="btn danger">🗑 Delete car</button></div>
+ </div></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const state={raw:null,outline:null,aiMask:null,art:null,cards:[],selected:null,db:null,store:'indexeddb',pending:[],drawing:false,aiBusy:false,segmenter:null};
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const flash=msg=>{const el=$('savedMessage');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3500)};
+const money=n=>n===null||n===undefined||n===''?'—':Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+function showTab(which){const capture=which==='capture';$('capturePage').hidden=!capture;$('garagePage').hidden=capture;$('captureTab').classList.toggle('active',capture);$('garageTab').classList.toggle('active',!capture);if(!capture)renderGarage();scrollTo({top:0,behavior:'smooth'});}
+$('captureTab').onclick=()=>showTab('capture');$('garageTab').onclick=()=>showTab('garage');$('addAnotherBtn').onclick=()=>showTab('capture');
+$('cameraBtn').onclick=()=>$('cameraInput').click();$('galleryBtn').onclick=()=>$('galleryInput').click();
+for(const id of ['cameraInput','galleryInput'])$(id).addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;if(!file.type.startsWith('image/')){alert('Please select an image.');return;}try{state.raw=await loadPhoto(file);state.source=makeSource();state.outline=null;state.aiMask=null;renderArt();$('photoPreview').classList.add('show');$('tapHint').textContent='Choose AI remove background, or draw around the car.';}catch(err){alert('Could not open that photo. Try a different one.');}e.target.value='';});
+function loadPhoto(file){return new Promise((resolve,reject)=>{const u=URL.createObjectURL(file);const im=new Image();im.onload=()=>{URL.revokeObjectURL(u);resolve(im)};im.onerror=()=>{URL.revokeObjectURL(u);reject(new Error('Could not decode'))};im.src=u;});}
+function drawContain(ctx,img,w,h,pad=0){const ratio=Math.min((w-2*pad)/img.width,(h-2*pad)/img.height),iw=img.width*ratio,ih=img.height*ratio;ctx.drawImage(img,(w-iw)/2,(h-ih)/2,iw,ih)}
+function drawCover(ctx,img,w,h){const ratio=Math.max(w/img.width,h/img.height),iw=img.width*ratio,ih=img.height*ratio;ctx.drawImage(img,(w-iw)/2,(h-ih)/2,iw,ih)}
+function makeSource(){const c=document.createElement('canvas');c.width=760;c.height=500;const ctx=c.getContext('2d',{willReadFrequently:true});drawContain(ctx,state.raw,c.width,c.height);return c;}
+function outlinePath(ctx,pts){if(!pts||pts.length<3)return;ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);ctx.closePath();}
+function boxOf(pts){let minX=760,minY=500,maxX=0,maxY=0;for(const p of pts){minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y);}return {x:minX,y:minY,w:Math.max(1,maxX-minX),h:Math.max(1,maxY-minY)};}
+function makeCartoon(source){const c=document.createElement('canvas');c.width=760;c.height=500;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.filter=$('comicCheck').checked?'saturate(1.12) contrast(1.07)':'none';ctx.drawImage(source,0,0);ctx.filter='none';if($('comicCheck').checked){const im=ctx.getImageData(0,0,c.width,c.height),p=im.data;for(let i=0;i<p.length;i+=4){for(let z=0;z<3;z++){const v=p[i+z];p[i+z]=Math.min(255,Math.round(v/13)*13)}}ctx.putImageData(im,0,0);}return c;}
+function renderArt(){if(!state.raw)return;const canvas=$('previewCanvas'),ctx=canvas.getContext('2d');const source=makeCartoon(state.source||makeSource());ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#101b2a';ctx.fillRect(0,0,canvas.width,canvas.height);
+if(!state.outline&&!state.aiMask){ctx.drawImage(source,0,0);state.art=canvas.toDataURL('image/jpeg',.86);return;}
+const pts=state.outline;const bbox=state.aiMask?state.aiMask.bbox:boxOf(pts);const mask=document.createElement('canvas');mask.width=760;mask.height=500;const m=mask.getContext('2d');if(state.aiMask){m.drawImage(state.aiMask.canvas,0,0);}else{m.fillStyle='white';m.filter='blur(1.1px)';outlinePath(m,pts);m.fill();m.filter='none';}const cut=document.createElement('canvas');cut.width=760;cut.height=500;const cc=cut.getContext('2d');cc.drawImage(source,0,0);cc.globalCompositeOperation='destination-in';cc.drawImage(mask,0,0);cc.globalCompositeOperation='source-over';
+const margin=23;const sx=Math.max(0,Math.floor(bbox.x-margin)),sy=Math.max(0,Math.floor(bbox.y-margin));const sw=Math.min(760-sx,Math.ceil(bbox.x+bbox.w+margin)-sx),sh=Math.min(500-sy,Math.ceil(bbox.y+bbox.h+margin)-sy);const scale=Math.min(690/sw,395/sh);const dw=sw*scale,dh=sh*scale,dx=(760-dw)/2,dy=(500-dh)/2;
+const glow=ctx.createRadialGradient(380,225,24,380,225,460);glow.addColorStop(0,'#273d55');glow.addColorStop(1,'#101b2a');ctx.fillStyle=glow;ctx.fillRect(0,0,760,500);
+ctx.save();ctx.fillStyle='#050a1290';ctx.beginPath();ctx.ellipse(380,Math.min(455,dy+dh-5),Math.min(310,dw*.44),15,0,0,Math.PI*2);ctx.fill();ctx.restore();
+ctx.save();ctx.shadowColor='rgba(0,0,0,.55)';ctx.shadowBlur=18;ctx.shadowOffsetY=11;ctx.drawImage(cut,sx,sy,sw,sh,dx,dy,dw,dh);ctx.restore();ctx.drawImage(cut,sx,sy,sw,sh,dx,dy,dw,dh);state.art=canvas.toDataURL('image/jpeg',.88);
+}
+
+// Real vehicle segmentation: a small, free AI model runs in the browser, not on a paid server.
+// The model recognizes cars and buses; trucks may be detected as cars. It can miss unusual vehicles.
+function updateAI(message){const e=$('aiProgress');e.hidden=false;e.textContent=message;}
+function aiControls(busy){state.aiBusy=busy;$('aiRemoveBtn').disabled=busy;$('aiRemoveBtn').textContent=busy?'⏳ Working…':'✨ AI remove background';}
+async function getVehicleSegmenter(){if(state.segmenter)return state.segmenter;
+ updateAI('Loading the AI car detector for the first time. Please keep this page open…');
+ const {FilesetResolver,ImageSegmenter}=await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/vision_bundle.mjs');
+ const wasm=await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/wasm');
+ state.segmenter=await ImageSegmenter.createFromOptions(wasm,{baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/image_segmenter/deeplab_v3/float32/1/deeplab_v3.tflite',delegate:'CPU'},runningMode:'IMAGE',outputCategoryMask:true,outputConfidenceMasks:false});
+ return state.segmenter;
+}
+function aiVehicleCutout(result,segmenter){
+ const cm=result.categoryMask;if(!cm)throw Error('AI did not return an image mask.');
+ const maskData=cm.getAsUint8Array(),W=cm.width,H=cm.height;const labels=segmenter.getLabels().map(x=>String(x).toLowerCase());
+ let cls=[];for(let i=0;i<labels.length;i++)if(/(^|[^a-z])(car|bus|truck|motorbike|motorcycle)([^a-z]|$)/.test(labels[i]))cls.push(i);
+ if(!cls.length)cls=[6,7,14]; // VOC classes (bus, car, motorbike).
+ const selected=new Uint8Array(W*H);for(let i=0;i<selected.length;i++)if(cls.includes(maskData[i]))selected[i]=1;
+ // Keep the largest connected vehicle region, not several different cars in the scene.
+ const seen=new Uint8Array(W*H),stack=new Int32Array(W*H);let best=[],bestLen=0;
+ for(let i=0;i<selected.length;i++){if(!selected[i]||seen[i])continue;const component=[];let a=0,b=1;stack[0]=i;seen[i]=1;while(a<b){const j=stack[a++];component.push(j);const x=j%W,y=(j/W)|0;for(const n of [x>0?j-1:-1,x<W-1?j+1:-1,y>0?j-W:-1,y<H-1?j+W:-1])if(n>=0&&selected[n]&&!seen[n]){seen[n]=1;stack[b++]=n;}}if(component.length>bestLen){best=component;bestLen=component.length;}}
+ if(bestLen<W*H*.004||bestLen>W*H*.87)throw Error('I could not find a clear car in this picture. Try the manual outline.');
+ const data=new Uint8Array(W*H);let x0=W,y0=H,x1=0,y1=0;
+ for(const i of best){data[i]=1;const x=i%W,y=(i/W)|0;x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}
+ const cv=document.createElement('canvas');cv.width=W;cv.height=H;const mc=cv.getContext('2d');const im=mc.createImageData(W,H);for(let i=0;i<data.length;i++){im.data[i*4]=255;im.data[i*4+1]=255;im.data[i*4+2]=255;im.data[i*4+3]=data[i]?255:0;}mc.putImageData(im,0,0);
+ const scaled=document.createElement('canvas');scaled.width=760;scaled.height=500;const ctx=scaled.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.filter='blur(1.25px)';ctx.drawImage(cv,0,0,760,500);ctx.filter='none';
+ return {canvas:scaled,bbox:{x:x0/W*760,y:y0/H*500,w:(x1-x0+1)/W*760,h:(y1-y0+1)/H*500}};
+}
+$('aiRemoveBtn').onclick=async()=>{if(!state.raw||state.aiBusy)return;const current=state.raw;aiControls(true);
+ try{const segmenter=await getVehicleSegmenter();if(current!==state.raw)return;
+ updateAI('AI loaded. Finding the vehicle in your photo…');
+ await new Promise(requestAnimationFrame);
+ let r;try{r=segmenter.segment(state.source);}catch(e){throw Error('The AI could not process this photo on your phone. Try drawing around the car.');}
+ try{state.aiMask=aiVehicleCutout(r,segmenter);}finally{r.close?.();}
+ if(current!==state.raw)return;state.outline=null;renderArt();$('tapHint').textContent='AI cutout ready! If it missed a part, use Draw around car to fix it.';
+ updateAI('✓ AI found a vehicle. Your photo stays on your device.');
+ }catch(err){console.warn('SpotGarage AI:',err);updateAI('AI could not finish processing this photo. Check your connection or use Draw around car.');$('tapHint').textContent=String(err.message||'AI failed. Try the manual outline.');}
+ finally{aiControls(false);}
+};
+
+$('comicCheck').onchange=renderArt;
+const oc=$('outlineCanvas');
+function editorPoint(evt){const r=oc.getBoundingClientRect();return {x:Math.max(0,Math.min(760,(evt.clientX-r.left)*760/r.width)),y:Math.max(0,Math.min(500,(evt.clientY-r.top)*500/r.height))};}
+function drawEditor(){if(!state.raw)return;const ctx=oc.getContext('2d');ctx.clearRect(0,0,760,500);ctx.fillStyle='#0c1520';ctx.fillRect(0,0,760,500);ctx.drawImage(state.source||makeSource(),0,0);const pts=state.pending;if(pts.length){ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);if(!state.drawing&&pts.length>=3){ctx.closePath();ctx.fillStyle='rgba(255,190,69,.18)';ctx.fill();}ctx.strokeStyle='#12181e';ctx.lineWidth=7;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();ctx.strokeStyle='#ffcd53';ctx.lineWidth=3.5;ctx.stroke();ctx.beginPath();ctx.arc(pts[0].x,pts[0].y,6,0,Math.PI*2);ctx.fillStyle='#ffce59';ctx.fill();}}
+function openOutline(){if(!state.raw)return;state.pending=[];state.drawing=false;$('outlineStatus').textContent='Use one finger to trace around the car.';$('useOutline').disabled=true;$('outlineModal').classList.add('show');document.body.style.overflow='hidden';drawEditor();}
+function closeOutline(){$('outlineModal').classList.remove('show');document.body.style.overflow='';state.drawing=false;}
+$('openOutlineBtn').onclick=openOutline;$('closeOutline').onclick=closeOutline;$('cancelOutline').onclick=closeOutline;
+$('clearOutline').onclick=()=>{state.pending=[];state.drawing=false;$('useOutline').disabled=true;$('outlineStatus').textContent='Start again: trace one continuous line around the car.';drawEditor();};
+oc.addEventListener('pointerdown',e=>{if(!state.raw||state.drawing)return;e.preventDefault();state.pending=[editorPoint(e)];state.drawing=true;oc.setPointerCapture(e.pointerId);$('useOutline').disabled=true;$('outlineStatus').textContent='Keep tracing around the car without lifting your finger…';drawEditor();});
+oc.addEventListener('pointermove',e=>{if(!state.drawing)return;e.preventDefault();const pt=editorPoint(e),prev=state.pending[state.pending.length-1];if((pt.x-prev.x)**2+(pt.y-prev.y)**2>5){state.pending.push(pt);drawEditor();}});
+function finishOutline(e){if(!state.drawing)return;e.preventDefault();state.drawing=false;const pts=state.pending;const b=boxOf(pts);const enough=pts.length>=12&&b.w>=35&&b.h>=30;$('useOutline').disabled=!enough;$('outlineStatus').textContent=enough?'Outline complete! Tap Remove background below.':'That line is too short. Tap Start over and trace the whole car.';drawEditor();}
+oc.addEventListener('pointerup',finishOutline);oc.addEventListener('pointercancel',finishOutline);
+$('useOutline').onclick=()=>{if($('useOutline').disabled||!state.pending.length)return;state.outline=state.pending.map(p=>({...p}));state.aiMask=null;closeOutline();renderArt();$('tapHint').textContent='Background removed using your outline. If any edges look wrong, tap Draw around car and try again.';};
+$('fullPhotoBtn').onclick=()=>{if(!state.raw)return;state.outline=null;state.aiMask=null;renderArt();$('tapHint').textContent='Original full photo restored. You can outline the car again at any time.';};
+function startDb(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(Error('No IndexedDB'));return;}const req=indexedDB.open('SpotGarageDatabase',1);req.onupgradeneeded=()=>{req.result.createObjectStore('cars',{keyPath:'id'})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+function dbCall(kind,method,payload){return new Promise((resolve,reject)=>{const t=state.db.transaction('cars',kind);const r=t.objectStore('cars')[method](...(payload===undefined?[]:[payload]));r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
+async function storageInit(){try{state.db=await startDb();state.cards=await dbCall('readonly','getAll');state.store='indexeddb';}catch(e){state.store='local';try{state.cards=JSON.parse(localStorage.getItem('spotgarage-cars')||'[]');}catch(e2){state.cards=[];alert('Storage is unavailable in this browser. You can try the app but your cards may not be saved.');}}renderGarage();}
+async function saveCar(car){if(state.store==='indexeddb')await dbCall('readwrite','put',car);else localStorage.setItem('spotgarage-cars',JSON.stringify([...state.cards.filter(c=>c.id!==car.id),car]));state.cards=[car,...state.cards.filter(c=>c.id!==car.id)];renderGarage();}
+async function deleteCar(id){if(state.store==='indexeddb')await dbCall('readwrite','delete',id);else localStorage.setItem('spotgarage-cars',JSON.stringify(state.cards.filter(c=>c.id!==id)));state.cards=state.cards.filter(c=>c.id!==id);renderGarage();}
+$('carForm').addEventListener('submit',async e=>{e.preventDefault();if(!state.art){alert('Add a car photo first.');return;}const make=$('make').value.trim(),model=$('model').value.trim();if(!make||!model){alert('Enter a car make and model.');return;}const car={id:(globalThis.crypto&&typeof globalThis.crypto.randomUUID==='function'?globalThis.crypto.randomUUID():String(Date.now())+Math.random()),make,model,year:$('year').value||'',rarity:$('rarity').value,hp:$('hp').value||'',speed:$('speed').value||'',price:$('price').value||'',art:state.art,createdAt:new Date().toISOString()};try{await saveCar(car);$('carForm').reset();$('rarity').value='Rare';$('comicCheck').checked=true;$('photoPreview').classList.remove('show');state.raw=null;state.source=null;state.art=null;state.outline=null;state.aiMask=null;$('tapHint').textContent='Choose AI remove background or trace around the car.';flash('✓ Car saved! Opening your garage…');setTimeout(()=>showTab('garage'),500);}catch(err){alert('Unable to save this car. Try backing up your collection and freeing browser space.');}});
+function renderGarage(){state.cards.sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));$('garageCount').textContent=`(${state.cards.length})`;$('emptyGarage').hidden=state.cards.length>0;$('garageGrid').replaceChildren();for(const car of state.cards){const card=document.createElement('button');card.type='button';card.className='car-card';card.innerHTML=`<img alt="" src="${car.art}"/><div class="car-card-body"><div class="car-model">${escapeHtml(car.make)} ${escapeHtml(car.model)}</div><div class="car-desc">${escapeHtml(car.year||'Year unknown')} • ${escapeHtml(car.rarity||'Rare')}</div><div class="car-meta"><b>${car.hp?escapeHtml(car.hp)+' HP':'HP —'}</b><b>${car.speed?escapeHtml(car.speed)+' MPH':'Speed —'}</b></div></div>`;card.onclick=()=>openDetails(car.id);$('garageGrid').append(card);}}
+function openDetails(id){const car=state.cards.find(c=>c.id===id);if(!car)return;state.selected=id;$('detailImage').src=car.art;$('detailTitle').textContent=car.make+' '+car.model;$('detailSubtitle').textContent=[car.year,car.rarity,new Date(car.createdAt).toLocaleDateString()].filter(Boolean).join(' • ');$('detailHp').textContent=car.hp?car.hp+' hp':'—';$('detailSpeed').textContent=car.speed?car.speed+' mph':'—';$('detailPrice').textContent=money(car.price);$('detailModal').classList.add('show');$('closeModal').focus();}
+function closeDetails(){$('detailModal').classList.remove('show');state.selected=null;}$('closeModal').onclick=closeDetails;$('detailModal').addEventListener('click',e=>{if(e.target===$('detailModal'))closeDetails()});window.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetails()});
+$('deleteCardBtn').onclick=async()=>{if(!state.selected||!confirm('Delete this car from your collection?'))return;try{await deleteCar(state.selected);closeDetails();}catch(e){alert('Could not delete this car.')}};
+const saveFile=(blob,name)=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000)};
+$('backupBtn').onclick=()=>{const blob=new Blob([JSON.stringify({app:'SpotGarage',version:1,cards:state.cards,exportedAt:new Date().toISOString()})],{type:'application/json'});saveFile(blob,'spotgarage-backup-'+new Date().toISOString().slice(0,10)+'.json')};
+$('restoreBtn').onclick=()=>$('backupInput').click();$('backupInput').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{const o=JSON.parse(await file.text());if(o.app!=='SpotGarage'||!Array.isArray(o.cards))throw Error('Not a SpotGarage backup');if(!confirm(`Restore ${o.cards.length} cars? Cars already in your garage will be kept.`))return;let count=0;for(const car of o.cards){if(!car.id||!car.art||!car.make||!car.model||state.cards.some(c=>c.id===car.id))continue;await saveCar(car);count++;}alert(`Restored ${count} cars.`)}catch(err){alert('Could not restore backup. Use a SpotGarage backup file.')}finally{e.target.value=''}};
+
+function rounded(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}
+function gradient(ctx,y,h,colors){const g=ctx.createLinearGradient(0,y,0,y+h);for(let i=0;i<colors.length;i++)g.addColorStop(i/(colors.length-1),colors[i]);return g;}
+function fitFont(ctx,txt,maxWidth,size,min=24){while(size>min){ctx.font=`900 ${size}px system-ui`;if(ctx.measureText(txt).width<=maxWidth)break;size-=2;}return size;}
+function drawPremiumCard(car,img){const can=document.createElement('canvas');can.width=900;can.height=1220;const c=can.getContext('2d');
+ c.fillStyle=gradient(c,0,1220,['#081529','#14497a','#071427']);c.fillRect(0,0,900,1220);
+ c.strokeStyle='#74b9e9';c.lineWidth=14;rounded(c,15,15,870,1190,42);c.stroke();c.strokeStyle='#1c5083';c.lineWidth=6;rounded(c,31,31,838,1158,30);c.stroke();
+ // Header + rarity badge
+ c.fillStyle='#071e39';rounded(c,74,55,738,124,24);c.fill();c.textAlign='center';c.fillStyle='#f2f8ff';c.font='900 58px system-ui';c.fillText('SPOT',322,139);c.fillStyle='#62c6ff';c.fillText('GARAGE',566,139);
+ const rarity=String(car.rarity||'Rare').toUpperCase();c.fillStyle=gradient(c,76,140,['#f3d18b','#b87821']);rounded(c,710,191,134,89,16);c.fill();c.fillStyle='#17243c';c.font='900 23px system-ui';c.fillText(rarity,777,247);
+ // Main vehicle field matches reference design's bright blue studio mood
+ const bg=c.createRadialGradient(451,486,25,451,486,480);bg.addColorStop(0,'#1f6dab');bg.addColorStop(1,'#0a254a');c.fillStyle=bg;rounded(c,56,201,788,534,20);c.fill();
+ c.save();rounded(c,58,204,784,529,18);c.clip();c.fillStyle='#05152a66';c.beginPath();c.ellipse(452,655,326,29,0,0,Math.PI*2);c.fill();c.restore();
+ // Draw source artwork centered in the studio, not full-frame crop.
+ c.save();rounded(c,64,210,772,514,14);c.clip();const scale=Math.min(772/img.width,514/img.height);const iw=img.width*scale,ih=img.height*scale;c.drawImage(img,450-iw/2,467-ih/2,iw,ih);c.restore();
+ c.fillStyle='#ffc46d';c.font='bold 24px system-ui';c.textAlign='left';c.fillText('COLLECTOR EDITION',66,785);
+ const title=[car.make,car.model].filter(Boolean).join(' ');c.fillStyle='#f6fbff';c.textAlign='center';const fs=fitFont(c,title,790,55,28);c.font=`900 ${fs}px system-ui`;c.fillText(title,450,855);
+ c.font='700 29px system-ui';c.fillStyle='#accfe9';c.fillText([car.year,rarity].filter(Boolean).join('  •  '),450,902);
+ const tiles=[['HORSEPOWER',car.hp?car.hp+' hp':'—'],['TOP SPEED',car.speed?car.speed+' mph':'—'],['VALUE',money(car.price)]];
+ for(let i=0;i<3;i++){const x=61+i*260;c.fillStyle=gradient(c,939,178,['#123f69','#071a34']);rounded(c,x,939,249,169,16);c.fill();c.strokeStyle='#438cc6';c.lineWidth=3;c.stroke();c.fillStyle='#a9c9df';c.textAlign='center';c.font='700 20px system-ui';c.fillText(tiles[i][0],x+124,988);c.fillStyle='#fff';let fontsize=37;while(fontsize>21){c.font=`900 ${fontsize}px system-ui`;if(c.measureText(tiles[i][1]).width<=214)break;fontsize-=2;}c.fillText(tiles[i][1],x+124,1063);}
+ c.fillStyle='#729cba';c.textAlign='center';c.font='18px system-ui';c.fillText('SPOTTED '+new Date(car.createdAt).toLocaleDateString(),450,1161);
+ return can;
+}
+$('downloadCardBtn').onclick=()=>{const car=state.cards.find(c=>c.id===state.selected);if(!car)return;const img=new Image();img.onload=()=>{const can=drawPremiumCard(car,img);can.toBlob(b=>{if(b)saveFile(b,`${(car.make+'-'+car.model).replace(/[^a-z0-9-]/gi,'_')}-SpotGarage.png`)},'image/png')};img.onerror=()=>alert('Unable to load the car artwork.');img.src=car.art;};
+storageInit();
+</script>
+</body>
+</html>
